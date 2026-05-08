@@ -1,0 +1,147 @@
+# VIDEO PRESENTATION SCRIPT
+# Mini-Compiler Project — Full Phase Integration
+# Duration: ~90 seconds | Language: English
+# ================================================
+
+## WHAT TO RECORD
+  Tool : OBS Studio (free) or Windows Game Bar (Win+G) or QuickTime (Mac)
+  Window: VS Code terminal running  node run.js
+  Font  : Increase terminal font to 16–18 pt so text is legible in the recording
+  Resolution: 1920×1080 recommended
+
+## BEFORE YOU HIT RECORD
+  1. Open VS Code
+  2. Open the mini-compiler folder
+  3. Open the integrated terminal  (Ctrl+`)
+  4. Clear the terminal            (type: clear)
+  5. Make sure node is installed   (node --version)
+
+==========================================================
+  SECTION 1  |  INTRO  |  0:00 – 0:12  |  ~12 seconds
+==========================================================
+
+ACTION: Show the project folder in the VS Code Explorer sidebar.
+        Point to the four source files: lexer.js, parser.js,
+        semantic.js, codegen.js.
+
+SAY:
+  "This is our Mini-Compiler project — a full four-phase
+   compiler written in JavaScript and run with Node.js.
+   The four phases are: Lexer, Parser, Semantic Analyzer,
+   and Code Generator.
+   Let's run all four test cases now."
+
+==========================================================
+  SECTION 2  |  RUN THE COMPILER  |  0:12 – 0:20
+==========================================================
+
+ACTION: Type in the terminal:
+          node run.js
+        Press ENTER. The output will scroll through all
+        four test cases automatically.
+
+SAY:
+  "I'll run the compiler with a single command — node run.js."
+
+==========================================================
+  SECTION 3  |  TEST 1 — SIMPLE ASSIGNMENT  |  0:20 – 0:38
+==========================================================
+
+ACTION: Scroll up in the terminal to Test 1 output.
+        Point to (or highlight) the TOKENS section.
+
+SAY (tokens):
+  "Test 1 is a simple variable assignment — int x equals 5,
+   int y equals 10, int z equals x plus y.
+   In Phase 1, the Lexer breaks the source into tokens.
+   You can see keyword tokens in purple — 'int',
+   identifier tokens in blue — 'x', 'y', 'z',
+   number tokens in green, and operator tokens in yellow."
+
+ACTION: Scroll to the AST section.
+
+SAY (AST):
+  "Phase 2, the Parser, builds the Abstract Syntax Tree.
+   Each VarDecl node represents one declaration.
+   The BinOp node represents the addition x plus y,
+   with Var(x) and Var(y) as its left and right children."
+
+ACTION: Scroll to Semantic / Code Gen.
+
+SAY (semantic + codegen):
+  "Phase 3 confirms all variables are declared correctly
+   and types match.  Phase 4 generates three-address code —
+   line 2 computes t0 = x + y,
+   then line 3 assigns that result to z.
+   Result: COMPILE SUCCESS."
+
+==========================================================
+  SECTION 4  |  TEST 2 — ARITHMETIC  |  0:38 – 0:50
+==========================================================
+
+ACTION: Scroll to Test 2 code-gen output.
+
+SAY:
+  "Test 2 tests operator precedence in arithmetic.
+   The expression  a * 2 + 4  must multiply before adding.
+   Notice the generated code:
+     t0 = a * 2    — multiplication first,
+     t1 = t0 + 4   — then addition,
+     b  = t1       — then the result is stored.
+   The parser's precedence rules are reflected
+   directly in the code-gen output."
+
+==========================================================
+  SECTION 5  |  TEST 3 — IF-ELSE  |  0:50 – 1:05
+==========================================================
+
+ACTION: Scroll to Test 3 code-gen output.
+
+SAY:
+  "Test 3 is an if-else statement.
+   The condition  x > 5  is evaluated into a temporary t0.
+   The code generator emits:
+     IF_FALSE t0 GOTO L0  — jump to the else block if false,
+     GOTO L1              — skip the else if true,
+     L0: label for the else branch,
+     L1: merge point after both branches.
+   This is exactly how real compilers implement control flow."
+
+==========================================================
+  SECTION 6  |  TEST 4 — ERROR DETECTION  |  1:05 – 1:20
+==========================================================
+
+ACTION: Scroll to Test 4 semantic output. Point to the red ✗ lines.
+
+SAY:
+  "Test 4 demonstrates error detection.
+   The source tries to use variable 'z' which was never declared,
+   and assigns the string 'hello' to a float variable 'w'.
+   The Semantic Analyzer catches both errors:
+     ✗ Undeclared variable 'z'
+     ✗ Type mismatch — cannot assign string to float.
+   Because of these errors, Code Generation is blocked.
+   The compiler reports COMPILE FAILED."
+
+==========================================================
+  SECTION 7  |  CLOSING  |  1:20 – 1:30
+==========================================================
+
+ACTION: Return to the VS Code Explorer and briefly show
+        each file name.
+
+SAY:
+  "Each phase is isolated in its own file:
+   lexer.js, parser.js, semantic.js, and codegen.js.
+   They're wired together by compiler.js and run
+   from run.js.  That's the complete Mini-Compiler —
+   all four phases working end to end."
+
+==========================================================
+  EDITING TIPS
+==========================================================
+  - Keep the video 90–120 seconds. Trim any long pauses.
+  - Add captions with the phase names as lower-thirds.
+  - Speed up scrolling sections by 1.25x in your editor.
+  - Free editors: DaVinci Resolve (Windows/Mac/Linux),
+                  CapCut (Web), iMovie (Mac).

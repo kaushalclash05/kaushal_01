@@ -1,0 +1,13 @@
+{
+  "name": "mini-compiler",
+  "version": "1.0.0",
+  "description": "A full-phase mini-compiler: Lexer → Parser → Semantic Analyzer → Code Generator",
+  "main": "src/compiler.js",
+  "scripts": {
+    "start": "node run.js",
+    "test": "node run.js"
+  },
+  "keywords": ["compiler", "lexer", "parser", "semantic", "codegen"],
+  "author": "",
+  "license": "MIT"
+}
